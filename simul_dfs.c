@@ -159,8 +159,6 @@ inline void end(char *str) {
 }
 
 void Seq_begin(MPI_Comm comm, int numprocs) {
-    int size;
-    int rank;
     int buf;
     MPI_Status status;
 
@@ -173,8 +171,6 @@ void Seq_begin(MPI_Comm comm, int numprocs) {
 }
 
 void Seq_end(MPI_Comm comm, int numprocs) {
-    int size;
-    int rank;
     int buf;
 
     MPI_Comm_size(comm, &size);
@@ -961,9 +957,6 @@ void simul_symlink(int shared) {
     /* All create the symlinks simultaneously */
     rc = dfs_open(hdl.dfs, NULL, linkname, S_IFLNK, O_CREAT,
 		  0, 0, filename, &sym);
-    if (rc) {
-	    FAIL("symlink failed");
-    }
     if (!shared) {
 	if (rc) {
 	    FAIL("symlink failed");
